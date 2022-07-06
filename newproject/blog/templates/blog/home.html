@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <h1 style="color:#022741;font-size:50px;font-weight: 900">Welcome to My Blogs</h1>
+    {% for blog in blogs %}
+        <div class="col-md-6 my-2 justify-content-between">
+            <h1>
+                {{blog.title}}
+            </h1>
+            {% for img in images %}
+            {% if img.blogtitle.title == blog.title  %}
+                <img class="blog-img" src="{{img.image.url}}" alt="image" class="img-thumbnail" height="250px" width="250px">
+            {% endif %}
+        {% endfor %}
+        </br>
+    </br>
+            <h3 style="color:#022741;font-weight: 700" "text-bold text-justify" >{{blog.description}}</h3>
+
+            <h4 class="d-inline">Author:-</h4><p class="text-uppercase text-danger font-weight-bold"> {{blog.author}}</p>
+            <h4 class="d-inline">Uploaded on :- </h4><p class="bg-danger text-white d-inline"> {{blog.created_on}}</p><br>
+            <h4 class="d-inline">Updated  on :- </h4><p class="bg-dark text-white d-inline"> {{blog.updated_on}}</p>
+
+
+
+            <p></p>
+            
+
+            
+        </div>
+        {% comment %} <div style="border-left:1px solid #000;height:500px"></div> {% endcomment %}
+        {% comment %} <div class="col-md-1 bg-success my-2">
+        </div> {% endcomment %}
+        {% endfor %}
+</div>
+
+{% endblock body %}
+

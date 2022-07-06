@@ -1,0 +1,42 @@
+                    <script
+                    src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
+                    </script>
+
+                    <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+                    <link
+                    rel="stylesheet"
+                    href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+                    />
+                    
+                <section class="github section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">My GitHub</h2>
+                        <div class="calendar">
+                            <!-- Loading stuff -->
+                            Loading the data just for you.
+                        </div>
+                        <div id="github-graph" class="github-graph">
+
+                        </div><!--//github-graph-->
+
+                                          
+                        {% comment %} <div id="ghfeed" class="ghfeed">
+                        </div><!--//ghfeed--> {% endcomment %}
+                        
+                    </div><!--//secton-inner-->
+                </section><!--//section-->
+
+
+                <script>
+                    GitHubCalendar(".calendar", "Akashmodi371");
+                
+                    // or enable responsive functionality:
+                    GitHubCalendar(".calendar", "Akashmodi371", { responsive: true });
+                
+                    // Use a proxy
+                    GitHubCalendar(".calendar", "Akashmodi371", {
+                       proxy (Akashmodi371) {
+                         return fetch(`https://your-proxy.com/github?user=${Akashmodi371}`)
+                       }
+                    }).then(r => r.text())
+                </script>

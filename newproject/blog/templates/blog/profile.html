@@ -1,0 +1,52 @@
+ {% extends 'blog/base.html' %}
+
+ {% block body %}
+
+ <div class="container d-block justify-content-center">
+ <h1>My Profile</h1>
+ <form action="" method="POST" novalidate>
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <p>{{error}}</p>
+        {% endfor %}
+    {% endif %}
+    {% for fm  in form %}
+    
+        {{fm.label_tag}}{{fm}}{{fm.errors|striptags}}</br></br>
+    
+    {% endfor %}
+    
+    <input type="submit" value="Save" class="btn btn-success">
+</form>
+<div class="container d-block justify-content-center">
+{% if messages %}
+{% for message in messages %}
+    <small {% if messages.tags%} class="{{message.tags}}" {%endif%}>{{message}}</small>
+{% endfor %}
+{% endif %}
+
+{% if users != None %}
+<h1>List Of Users</h1>
+<tabel>
+    <tr>
+        <td>ID</td>
+        <td>UserName</td>
+        <td>Email</td>
+        <td>View Profile</td>
+    </tr></br>
+    {% for user in users %}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td><a href="{%url 'userdetail' user.id%}" class="btn btn-primary"> View {{user.username}} Profile</a></td>
+    </tr></br>
+    {% endfor %}
+</table>
+{% endif %}
+
+
+{% endblock body %}
+
+

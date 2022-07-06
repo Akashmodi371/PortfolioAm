@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+<div class="container d-flex justify-content-center">
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p>{{error}}</p>
+            {% endfor %}
+        {% endif %}
+        {% for fm  in form %}
+        
+            {{fm.label_tag}}{{fm}}{{fm.errors|striptags}}</br></br>
+        
+        {% endfor %}
+        
+        <input type="submit"  value="Signin" class="btn btn-success">
+        
+    </form>
+</br>
+
+    
+    {% comment %} <a href="{%url 'signup'%}">Signup</a> {% endcomment %}
+    {% if messages %}
+    {% for message in messages %}
+        <small {% if messages.tags%} class="{{message.tags}}" {%endif%}>{{message}}</small>
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+    {% endblock body %}

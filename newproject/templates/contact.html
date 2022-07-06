@@ -1,0 +1,26 @@
+<aside class="blog aside section" id="contactme">
+    <div class="section-inner shadow-sm rounded">
+        <h2 class="heading text-center pt-1">Contact Me:-</h2>
+        <section>
+            <div class="row">
+                <div class="col-12">
+                    <form method="POST" action="#contactme">
+                        {% csrf_token %}
+                        {% comment %} <div>
+                            <label for="">Name</label>
+                            <input type="text" name='name' value="{{name}}" class='form-control'>
+                        </div>
+                        <div>
+                            <label for="">Email-id</label>
+                            <input type="Email" name='email' value="{{email}}" class='form-control'>
+                        </div> {% endcomment %}
+                        {{output}}
+                        <div class='pt-4'>
+                            <button type="submit"> Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div><!--//section-inner-->
+</aside><!--//section-->
