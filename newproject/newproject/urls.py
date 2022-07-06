@@ -43,7 +43,7 @@ urlpatterns = [
     path('myblogs/',views.myblogs,name='myblogs'),
     path('view/<int:pk>',views.viewblog,name='viewblog'),
     path('deleteimage/<int:pk>',views.deleteimage,name='deleteimage')
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 if settings.DEBUG:
